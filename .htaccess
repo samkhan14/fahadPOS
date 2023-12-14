@@ -1,0 +1,5 @@
+# Options +FollowSymlinks
+RewriteEngine On
+# RewriteBase /
+# RewriteCond %{REQUEST_URI} !/hold.html$
+# RewriteRule .* /hold.html [L]

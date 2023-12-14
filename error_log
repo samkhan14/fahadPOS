@@ -1,0 +1,82 @@
+[15-Jan-2019 21:03:32 Asia/Karachi] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home2/fournode/saadpos.tk/api/db.php on line 295
+[15-Jan-2019 21:03:32 Asia/Karachi] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect Error 1040: Too many connections' in /home2/fournode/saadpos.tk/api/db.php:298
+Stack trace:
+#0 /home2/fournode/saadpos.tk/api/db.php(377): MysqliDb->connect('default')
+#1 /home2/fournode/saadpos.tk/api/db.php(1908): MysqliDb->mysqli()
+#2 /home2/fournode/saadpos.tk/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home2/fournode/saadpos.tk/api/db.php(686): MysqliDb->_buildQuery(NULL)
+#4 /home2/fournode/saadpos.tk/orders.php(189): MysqliDb->get('orders')
+#5 {main}
+  thrown in /home2/fournode/saadpos.tk/api/db.php on line 298
+[15-Jan-2019 21:03:43 Asia/Karachi] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home2/fournode/saadpos.tk/api/db.php on line 295
+[15-Jan-2019 21:03:43 Asia/Karachi] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect Error 1040: Too many connections' in /home2/fournode/saadpos.tk/api/db.php:298
+Stack trace:
+#0 /home2/fournode/saadpos.tk/api/db.php(377): MysqliDb->connect('default')
+#1 /home2/fournode/saadpos.tk/api/db.php(1908): MysqliDb->mysqli()
+#2 /home2/fournode/saadpos.tk/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home2/fournode/saadpos.tk/api/db.php(686): MysqliDb->_buildQuery(NULL)
+#4 /home2/fournode/saadpos.tk/orders.php(189): MysqliDb->get('orders')
+#5 {main}
+  thrown in /home2/fournode/saadpos.tk/api/db.php on line 298
+[15-Jan-2019 21:03:47 Asia/Karachi] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home2/fournode/saadpos.tk/api/db.php on line 295
+[15-Jan-2019 21:03:47 Asia/Karachi] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect Error 1040: Too many connections' in /home2/fournode/saadpos.tk/api/db.php:298
+Stack trace:
+#0 /home2/fournode/saadpos.tk/api/db.php(377): MysqliDb->connect('default')
+#1 /home2/fournode/saadpos.tk/api/db.php(1908): MysqliDb->mysqli()
+#2 /home2/fournode/saadpos.tk/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home2/fournode/saadpos.tk/api/db.php(686): MysqliDb->_buildQuery(NULL)
+#4 /home2/fournode/saadpos.tk/orders.php(189): MysqliDb->get('orders')
+#5 {main}
+  thrown in /home2/fournode/saadpos.tk/api/db.php on line 298
+[15-Jan-2019 21:04:15 Asia/Karachi] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home2/fournode/saadpos.tk/api/db.php on line 295
+[15-Jan-2019 21:04:15 Asia/Karachi] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect Error 1040: Too many connections' in /home2/fournode/saadpos.tk/api/db.php:298
+Stack trace:
+#0 /home2/fournode/saadpos.tk/api/db.php(377): MysqliDb->connect('default')
+#1 /home2/fournode/saadpos.tk/api/db.php(1908): MysqliDb->mysqli()
+#2 /home2/fournode/saadpos.tk/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home2/fournode/saadpos.tk/api/db.php(686): MysqliDb->_buildQuery(NULL)
+#4 /home2/fournode/saadpos.tk/orders.php(189): MysqliDb->get('orders')
+#5 {main}
+  thrown in /home2/fournode/saadpos.tk/api/db.php on line 298
+[15-Jan-2019 21:05:08 Asia/Karachi] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home2/fournode/saadpos.tk/api/db.php on line 295
+[15-Jan-2019 21:05:08 Asia/Karachi] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect Error 1040: Too many connections' in /home2/fournode/saadpos.tk/api/db.php:298
+Stack trace:
+#0 /home2/fournode/saadpos.tk/api/db.php(377): MysqliDb->connect('default')
+#1 /home2/fournode/saadpos.tk/api/db.php(1908): MysqliDb->mysqli()
+#2 /home2/fournode/saadpos.tk/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home2/fournode/saadpos.tk/api/db.php(686): MysqliDb->_buildQuery(NULL)
+#4 /home2/fournode/saadpos.tk/orders.php(189): MysqliDb->get('orders')
+#5 {main}
+  thrown in /home2/fournode/saadpos.tk/api/db.php on line 298
+[02-Nov-2019 01:13:42 America/Chicago] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home2/fournode/public_html/saadpos.tk/api/db.php on line 295
+[02-Nov-2019 01:13:42 America/Chicago] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect Error 2002: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)' in /home2/fournode/public_html/saadpos.tk/api/db.php:298
+Stack trace:
+#0 /home2/fournode/public_html/saadpos.tk/api/db.php(377): MysqliDb->connect('default')
+#1 /home2/fournode/public_html/saadpos.tk/api/db.php(1908): MysqliDb->mysqli()
+#2 /home2/fournode/public_html/saadpos.tk/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home2/fournode/public_html/saadpos.tk/api/db.php(686): MysqliDb->_buildQuery(1)
+#4 /home2/fournode/public_html/saadpos.tk/api/db.php(711): MysqliDb->get('orders', 1, '*')
+#5 /home2/fournode/public_html/saadpos.tk/bill.php(6): MysqliDb->getOne('orders')
+#6 {main}
+  thrown in /home2/fournode/public_html/saadpos.tk/api/db.php on line 298
+[02-Nov-2019 11:13:58 Asia/Karachi] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home2/fournode/public_html/saadpos.tk/api/db.php on line 295
+[02-Nov-2019 11:13:58 Asia/Karachi] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect Error 2002: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)' in /home2/fournode/public_html/saadpos.tk/api/db.php:298
+Stack trace:
+#0 /home2/fournode/public_html/saadpos.tk/api/db.php(377): MysqliDb->connect('default')
+#1 /home2/fournode/public_html/saadpos.tk/api/db.php(1908): MysqliDb->mysqli()
+#2 /home2/fournode/public_html/saadpos.tk/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home2/fournode/public_html/saadpos.tk/api/db.php(686): MysqliDb->_buildQuery(NULL)
+#4 /home2/fournode/public_html/saadpos.tk/orders.php(189): MysqliDb->get('orders')
+#5 {main}
+  thrown in /home2/fournode/public_html/saadpos.tk/api/db.php on line 298
+[27-May-2021 04:11:31 America/New_York] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home/talronlu/public_html/pos/api/db.php on line 295
+[27-May-2021 04:11:31 America/New_York] PHP Fatal error:  Uncaught Exception: Connect Error 1040: Too many connections in /home/talronlu/public_html/pos/api/db.php:298
+Stack trace:
+#0 /home/talronlu/public_html/pos/api/db.php(377): MysqliDb->connect('default')
+#1 /home/talronlu/public_html/pos/api/db.php(1908): MysqliDb->mysqli()
+#2 /home/talronlu/public_html/pos/api/db.php(1519): MysqliDb->_prepareQuery()
+#3 /home/talronlu/public_html/pos/api/db.php(686): MysqliDb->_buildQuery(1)
+#4 /home/talronlu/public_html/pos/api/db.php(711): MysqliDb->get('orders', 1, '*')
+#5 /home/talronlu/public_html/pos/bill.php(6): MysqliDb->getOne('orders')
+#6 {main}
+  thrown in /home/talronlu/public_html/pos/api/db.php on line 298
