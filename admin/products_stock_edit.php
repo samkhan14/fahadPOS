@@ -4,7 +4,6 @@
 if (isset($_GET['edit'])) {
     $db->where("id", $_GET['edit']);
     $user = $db->getOne("product_batch");
-
 }
 ?>
 
@@ -22,15 +21,13 @@ if (isset($_GET['edit'])) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Buying Price</label>
-                                        <input type="text" class="form-control border-input" id="buying_price"
-                                               placeholder="" value="<?php echo $user['buying_price']; ?>">
+                                        <input type="text" class="form-control border-input" id="buying_price" placeholder="" value="<?php echo $user['buying_price']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Selling Price</label>
-                                        <input type="text" class="form-control border-input" id="selling_price"
-                                               placeholder="" value="<?php echo $user['selling_price']; ?>">
+                                        <input type="text" class="form-control border-input" id="selling_price" placeholder="" value="<?php echo $user['selling_price']; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -38,15 +35,13 @@ if (isset($_GET['edit'])) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Quantity</label>
-                                        <input type="text" class="form-control border-input" id="quantity"
-                                               placeholder="" value="<?php echo $user['quantity']; ?>">
+                                        <input type="text" class="form-control border-input" id="quantity" placeholder="" value="<?php echo $user['quantity']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Import Quantity</label>
-                                        <input type="text" class="form-control border-input" id="import_quantity"
-                                               placeholder="" value="<?php echo $user['import_quantity']; ?>">
+                                        <input type="text" class="form-control border-input" id="import_quantity" placeholder="" value="<?php echo $user['import_quantity']; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -97,38 +92,59 @@ if (isset($_GET['edit'])) {
 
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="assets/js/demo.js"></script>
+<!-- sweetalert popup -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-
-        $(document).on('click', '#btn-save', function () {
+    $(document).ready(function() {
+        $(document).on('click', '#btn-save', function() {
             if ($("#buying_price").val() == "" || $("#selling_price").val() == "" || $("#quantity").val() == "" || $("#import_quantity").val() == "") {
-                alert("Missing Field");
+                // Use SweetAlert for missing fields
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Missing Field',
+                    text: 'Please fill in all fields',
+                });
             } else if ($("#quantity").val() > $("#import_quantity").val()) {
-                alert("Quantity can not be greater than Import Quantity!");
+                // Use SweetAlert for quantity validation
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Quantity',
+                    text: 'Quantity cannot be greater than Import Quantity',
+                });
             } else if ($("#buying_price").val() > $("#selling_price").val()) {
-                alert("Buying price can not be greater than Selling price");
+                // Use SweetAlert for price validation
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Prices',
+                    text: 'Buying price cannot be greater than Selling price',
+                });
             } else {
                 $.post("update.php", {
-                    operation: "update_product_stock",
-                    id: <?php echo $_GET['edit'];?> ,
-                    buying_price: document.getElementById("buying_price").value,
-                    selling_price: document.getElementById("selling_price").value,
-                    product_id: <?php echo $user['product_id'];?>,
-                    quantity: document.getElementById("quantity").value,
-                    import_quantity: document.getElementById("import_quantity").value
-                })
-                    .done(function (data) {
-
-                        var location = 'products_stock.php?id=' +<?php echo $user['product_id'];?>;
-                        window.location.replace(location);
+                        operation: "update_product_stock",
+                        id: <?php echo $_GET['edit']; ?>,
+                        buying_price: document.getElementById("buying_price").value,
+                        selling_price: document.getElementById("selling_price").value,
+                        product_id: <?php echo $user['product_id']; ?>,
+                        quantity: document.getElementById("quantity").value,
+                        import_quantity: document.getElementById("import_quantity").value
+                    })
+                    .done(function(data) {
+                        // Use SweetAlert for success
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Product Stock Updated successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            var location = 'products_stock.php?id=' + <?php echo $user['product_id']; ?>;
+                            window.location.replace(location);
+                        });
                     });
-
             }
-
         });
-
     });
 </script>
+
 
 </html>

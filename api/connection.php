@@ -6,6 +6,6 @@ $pass     = '';
 $host     = 'localhost';
 $db       = new MysqliDb ($host, $user, $pass, $database);
 
-$url = 'http://localhost/fahadpos/';
+$url = 'http://localhost:8080/fahadpos/';
 
 ?>
