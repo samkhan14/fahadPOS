@@ -71,7 +71,8 @@
                     [0, 'desc']
                 ],
                 "ajax": {
-                    "url": "<?= $url ?>/api.php?operation=get_orders"
+                    "url": "<?= $url ?>api.php?operation=get_orders"
+
                 },
                 "draw": "draw",
                 "recordsTotal": "recordsTotal",
@@ -99,18 +100,34 @@
             });
 
             $("#ot1 tbody").on("click", "td .btn-del", function() {
+                id = $(this).attr("data-id");
+                // Use SweetAlert for confirmation
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.get("<?= $url ?>admin/api.php?operation=del_order&order_id=" + id, function(data) {
+                            msg = $.parseJSON(data);
 
-                if (confirm("Are you sure you want to delete this order?")) {
+                            // Use SweetAlert for success
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Product Deleted',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                tbl.ajax.reload();
+                            });
+                        });
+                    }
+                });
 
-                    id = $(this).attr("data-id");
-
-                    $.get("<?= $url ?>admin/api.php?operation=del_order&order_id=" + id, function(data) {
-
-                        msg = $.parseJSON(data);
-                        alert(msg);
-                        tbl.ajax.reload();
-                    });
-                }
             });
 
         });
@@ -541,30 +558,93 @@
     </script>
 <?php } ?>
 
-<?php if (basename($_SERVER['PHP_SELF']) == 'summary.php' || basename($_SERVER['PHP_SELF']) == 'daily_report.php') { ?>
+<?php if (basename($_SERVER['PHP_SELF']) == 'daily_report.php') { ?>
 
     <script>
         $(document).ready(function() {
+            // for daily report
             $('.table-summary').DataTable({
+                "ajax": "<?= $url ?>admin/api.php?operation=get_daily_report",
+                "columns": [
+                    // Define your DataTable columns here
+                    // {
+                    //     "data": "DT_RowId"
+                    // },
+                    {
+                        "data": "date"
+                    },                   
+                    {
+                        "data": "orders"
+                    },
+                    {
+                        "data": "sales",
+                    },
+                    {
+                        "data": "discount"
+                    },
+                    {
+                        "data": "expense"
+                    },
+                    {
+                        "data": "total"
+                    },
+                    {
+                        "data": "profit"
+                    }
+                    // Add more columns as needed
+                ]
+            });
+        });
+        </script>
+        <?php } ?>
 
-                "columnDefs": [{
-                    "type": "html-num",
-                    "targets": 0
-                }]
-
+        <?php if (basename($_SERVER['PHP_SELF']) == 'summary.php') { ?>
+             <!-- for monthly summary -->
+                <script>
+                $(document).ready(function() {
+                $('.table_summary_monthly').DataTable({
+                    "ajax": "<?= $url ?>admin/api.php?operation=get_monthly_summary",
+                    "columns": [
+                        // Define your DataTable columns here
+                        // {
+                        //     "data": "DT_RowId"
+                        // },
+                        {
+                            "data": "month"
+                        },
+                        {
+                            "data": "orders"
+                        },
+                        {
+                            "data": "sales"
+                        },
+                        {
+                            "data": "discount"
+                        },
+                        {
+                            "data": "expense"
+                        },
+                        {
+                            "data": "total"
+                        },
+                        {
+                            "data": "profit"
+                        }
+                        // Add more columns as needed
+                    ]
+                });
             });
 
-        });
+           
+            $(document).ready(function() {
+                $('.table').DataTable({
+                    "order": [
+                        [0, "desc"]
+                    ],
 
-        $(document).ready(function() {
-            $('.table').DataTable({
-                "order": [
-                    [0, "desc"]
-                ],
+                });
 
             });
-
-        });
     </script>
 <?php } ?>
 

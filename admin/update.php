@@ -60,14 +60,32 @@ if ($operation == 'update_brand') {
                     "selling_price"   => $_POST['selling_price']
     );
 
-    update_sql('product_batch', $_POST['id'], $record);
+    $productId = $_POST['product_id'];
+    $batchId = $_POST['id'];
+
+    // Save the original values before the update
+    $originalValues = $db->rawQuery('SELECT * FROM product_batch WHERE id = ' . $batchId);
+
+    update_sql('product_batch', $batchId, $record);
+
+    // Retrieve the updated values after the update
+    $updatedValues = $db->rawQuery('SELECT * FROM product_batch WHERE id = ' . $batchId);
+
+      // Log the update details in the table
+      $logTable = 'log_product_batch';
+      $logValues = array(
+          'batch_id' => $batchId,
+          'product_id' => $productId,
+          'original_values' => json_encode($originalValues[0]),
+          'updated_values' => json_encode($updatedValues[0])
+      );
+
+    $db->insert($logTable, $logValues);
 
     $result = $db->rawQuery('SELECT SUM(quantity) as total FROM product_batch where product_id = ' . $_POST['product_id'] . ' GROUP BY product_id');
 
-
-    $record = Array("quantity" => $result[0]['total']);
-
-    update_sql('product', $_POST['product_id'], $record);
+    $productRecord = Array("quantity" => $result[0]['total']);
+    update_sql('product', $productId, $productRecord);
 
 } else if ($operation == 'add_product_batch') {
     $id = trim(strtolower($_POST['id']));

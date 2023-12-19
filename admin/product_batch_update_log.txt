@@ -1,0 +1,3 @@
+Product batch with ID 260 for product ID 1077 updated.
+Original values: {"id":260,"product_id":1077,"buying_price":2500,"selling_price":3000,"quantity":10,"import_quantity":10,"date":"2023-12-15 11:54:59"}
+Updated values: {"id":260,"product_id":1077,"buying_price":2500,"selling_price":3000,"quantity":15,"import_quantity":15,"date":"2023-12-15 11:54:59"}
