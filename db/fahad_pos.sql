@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2023 at 10:34 AM
+-- Generation Time: Dec 20, 2023 at 11:03 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -443,6 +443,51 @@ INSERT INTO `expense` (`id`, `name`, `amount`, `date`) VALUES
 (72, 'roti', 150.00, '2023-05-08 09:03:05'),
 (73, 'chai', 100.00, '2023-05-08 13:31:26'),
 (74, 'roti', 180.00, '2023-05-09 10:04:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_products`
+--
+
+CREATE TABLE `log_products` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `original_values` text DEFAULT NULL,
+  `updated_values` text DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `log_products`
+--
+
+INSERT INTO `log_products` (`id`, `product_id`, `original_values`, `updated_values`, `timestamp`) VALUES
+(1, 1009, '{\"id\":1009,\"name\":\"13010 AIR FILTER SUPER MAX\",\"category_id\":26,\"brand_id\":30,\"buying_price\":750,\"selling_price\":1000,\"quantity\":10,\"description\":\"description\"}', '{\"id\":1009,\"name\":\"13010 AIR FILTER SUPER MAX\",\"category_id\":25,\"brand_id\":30,\"buying_price\":750,\"selling_price\":1000,\"quantity\":10,\"description\":\"description\"}', '2023-12-20 06:36:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_product_batch`
+--
+
+CREATE TABLE `log_product_batch` (
+  `id` int(11) NOT NULL,
+  `batch_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `original_values` text DEFAULT NULL,
+  `updated_values` text DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `log_product_batch`
+--
+
+INSERT INTO `log_product_batch` (`id`, `batch_id`, `product_id`, `original_values`, `updated_values`, `timestamp`) VALUES
+(1, 157, 1077, '{\"id\":157,\"product_id\":1077,\"buying_price\":350,\"selling_price\":450,\"quantity\":4,\"import_quantity\":6,\"date\":\"2023-04-13 19:09:24\"}', '{\"id\":157,\"product_id\":1077,\"buying_price\":350,\"selling_price\":450,\"quantity\":3,\"import_quantity\":6,\"date\":\"2023-04-13 19:09:24\"}', '2023-12-19 12:04:30'),
+(2, 201, 1097, '{\"id\":201,\"product_id\":1097,\"buying_price\":400,\"selling_price\":550,\"quantity\":200,\"import_quantity\":200,\"date\":\"2023-04-17 17:29:07\"}', '{\"id\":201,\"product_id\":1097,\"buying_price\":400,\"selling_price\":550,\"quantity\":210,\"import_quantity\":210,\"date\":\"2023-04-17 17:29:07\"}', '2023-12-19 12:44:11'),
+(3, 260, 1077, '{\"id\":260,\"product_id\":1077,\"buying_price\":2500,\"selling_price\":3000,\"quantity\":15,\"import_quantity\":15,\"date\":\"2023-12-15 11:54:59\"}', '{\"id\":260,\"product_id\":1077,\"buying_price\":2500,\"selling_price\":3000,\"quantity\":20,\"import_quantity\":20,\"date\":\"2023-12-15 11:54:59\"}', '2023-12-19 13:10:33');
 
 -- --------------------------------------------------------
 
@@ -1030,7 +1075,14 @@ INSERT INTO `orders` (`id`, `customer_id`, `time`, `status`, `discount`, `total`
 (570, 207, '2023-12-15 15:11:00', 1, 0, 700.00),
 (571, 207, '2023-12-18 06:48:00', 2, 0, 0.00),
 (572, 207, '2023-12-18 09:05:00', 1, 0, 720.25),
-(573, 207, '2023-12-18 09:10:00', 2, 0, 15675.00);
+(573, 207, '2023-12-18 09:10:00', 2, 0, 15675.00),
+(574, 207, '2023-12-18 11:43:00', 1, 0, 1080.38),
+(575, 207, '2023-12-18 11:45:00', 1, 0, 22571.00),
+(576, 207, '2023-12-19 09:19:00', 1, 0, 20000.00),
+(577, 207, '2023-12-19 09:26:00', 1, 0, 500.00),
+(578, 207, '2023-12-19 09:28:00', 1, 0, 6500.00),
+(579, 207, '2023-12-19 09:33:00', 2, 0, 980.00),
+(580, 207, '2023-12-19 09:40:00', 2, 0, 500.00);
 
 -- --------------------------------------------------------
 
@@ -1805,7 +1857,21 @@ INSERT INTO `order_product` (`id`, `order_id`, `product_id`, `batch_id`, `unit_p
 (765, 573, 4, 29, 10080.00, 1.00),
 (766, 573, 10, 33, 1180.00, 1.00),
 (767, 573, 49, 11, 1129.00, 1.00),
-(768, 573, 48, 12, 3286.00, 1.00);
+(768, 573, 48, 12, 3286.00, 1.00),
+(769, 574, 1009, 253, 720.25, 1.50),
+(770, 575, 4, 29, 10080.00, 1.00),
+(771, 575, 5, 28, 4032.00, 1.00),
+(772, 575, 10, 33, 1180.00, 1.00),
+(773, 575, 43, 17, 7279.00, 1.00),
+(775, 576, 1009, 253, 1000.00, 15.00),
+(776, 576, 1009, 262, 1000.00, 5.00),
+(777, 577, 1141, 264, 100.00, 5.00),
+(778, 578, 1141, 264, 130.00, 45.00),
+(779, 578, 1141, 265, 130.00, 5.00),
+(780, 579, 1141, 265, 130.00, 1.00),
+(782, 579, 1052, 135, 350.00, 1.00),
+(783, 579, 1051, 134, 500.00, 1.00),
+(784, 580, 1009, 262, 1000.00, 0.50);
 
 -- --------------------------------------------------------
 
@@ -1832,18 +1898,18 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `brand_id`, `buying_price`, 
 (1, 'DELO GOLD ULTRA (500) 10 LTR', 4, 2, 10830.00, 12500.00, 4.00, ''),
 (2, 'DELO GOLD ULTRA (500) 4 LTR', 4, 2, 4332.00, 5000.00, 7.00, ''),
 (3, 'DELO GOLD ULTRA (500) 1 LTR', 4, 2, 1093.00, 1260.00, 0.00, ''),
-(4, 'DELO SILVER MULTI (400) 10 LTR', 4, 2, 8620.00, 10080.00, 4.00, ''),
-(5, 'DELO SILVER MULTI (400) 4 LTR', 4, 2, 3448.00, 4032.00, 8.00, ''),
+(4, 'DELO SILVER MULTI (400) 10 LTR', 4, 2, 8620.00, 10080.00, 3.00, ''),
+(5, 'DELO SILVER MULTI (400) 4 LTR', 4, 2, 3448.00, 4032.00, 7.00, ''),
 (7, 'DELO SILVER MONO (300) 10 LTR', 4, 2, 8280.00, 9570.00, 4.00, ''),
 (8, 'DELO SILVER MONO (300) 4 LTR', 4, 2, 3312.00, 3828.00, 4.50, ''),
-(10, 'DELO GEAR OIL SE140 1 LTR', 4, 2, 1110.00, 1180.00, 12.00, ''),
+(10, 'DELO GEAR OIL SE140 1 LTR', 4, 2, 1110.00, 1180.00, 11.00, ''),
 (13, 'HAVOLINE PRO DS 5/40 4 LTR', 4, 2, 7472.00, 8480.00, 2.00, ''),
 (15, 'HAVOLINE FORMULA 4 LTR', 4, 2, 4900.00, 5676.00, 8.00, ''),
 (16, 'HAVOLINE FORMULA 3 LTR', 4, 2, 3675.00, 4257.00, 8.00, ''),
 (23, 'HAVOLINE MOTOR OIL 4 LTR', 4, 2, 4024.00, 4404.00, 5.00, ''),
 (24, 'HAVOLINE MOTOR OIL 3 LTR', 4, 2, 2844.00, 3303.00, 4.00, ''),
 (25, 'HAVOLINE MOTOR OIL 1 LTR', 4, 2, 948.00, 1101.00, 17.00, ''),
-(43, 'SHELL HELIX HX7 4 LTR', 4, 3, 6000.00, 7279.00, 3.00, ''),
+(43, 'SHELL HELIX HX7 4 LTR', 4, 3, 6000.00, 7279.00, 2.00, ''),
 (44, 'SHELL HELIX HX7 3 LTR', 4, 3, 4500.00, 5464.00, 2.00, ''),
 (47, 'SHELL HELIX HX3 4 LTR', 4, 3, 3780.00, 4395.00, 3.00, ''),
 (48, 'SHELL HELIX HX3 3 LTR', 4, 3, 2835.00, 3286.00, 5.00, ''),
@@ -1934,7 +2000,7 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `brand_id`, `buying_price`, 
 (1006, '87402 AIR FILTER SUNRISE ', 26, 43, 230.00, 450.00, 2.00, 'description'),
 (1007, 'AQUA AIR FILTER SUNRISE ', 26, 43, 220.00, 450.00, 5.00, 'description'),
 (1008, 'YARIS AIR FILTER SUPER MAX', 26, 30, 380.00, 480.00, 6.00, 'description'),
-(1009, '13010 AIR FILTER SUPER MAX', 26, 30, 500.00, 720.25, 30.00, 'description'),
+(1009, '13010 AIR FILTER SUPER MAX', 25, 30, 750.00, 1000.00, 10.00, 'description'),
 (1010, '24010 AIR FILTER SUPER MAX', 26, 30, 320.00, 450.00, 3.00, 'description'),
 (1011, '30060 AIR FILTER SUPER MAX', 26, 30, 450.00, 650.00, 3.00, 'description'),
 (1012, '30040 AIR FILTER SUPER MAX', 26, 30, 650.00, 900.00, 3.00, 'description'),
@@ -2002,7 +2068,7 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `brand_id`, `buying_price`, 
 (1074, 'ISUZU HL407 OIL FILTER', 1, 14, 750.00, 1000.00, 2.00, 'description'),
 (1075, 'TOYOTA A3 OIL FILTER SP', 1, 14, 160.00, 450.00, 7.00, 'description'),
 (1076, 'HINO HL102 OIL FILTER', 1, 14, 950.00, 1200.00, 4.00, 'description'),
-(1077, '1332 DIESEL FILTER', 1, 14, 2500.00, 3000.00, 14.00, 'description'),
+(1077, '1332 DIESEL FILTER', 1, 14, 2500.00, 3000.00, 23.00, 'description'),
 (1078, 'NISSAN SUNNY HL215 OIL FILTER', 1, 14, 210.00, 300.00, 11.00, 'description'),
 (1079, 'HL311 OIL FILTER', 1, 14, 250.00, 350.00, 12.00, 'description'),
 (1080, 'MASTER PAPER OIL FILTER', 1, 14, 280.00, 400.00, 12.00, 'description'),
@@ -2022,7 +2088,7 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `brand_id`, `buying_price`, 
 (1094, 'HAV MOTOR OIL EXTRA 10/40 4LTR', 4, 2, 4612.00, 5268.00, 1.00, 'description'),
 (1095, 'SHELL ADVANCE AX3 1LTR', 4, 3, 725.00, 874.00, 4.00, 'description'),
 (1096, 'HAYCO HA584 AIR FILTER', 1, 42, 230.00, 300.00, 5.00, 'description'),
-(1097, '20/50 OIL', 4, 11, 300.00, 550.00, 198.10, 'description'),
+(1097, '20/50 OIL', 4, 11, 300.00, 550.00, 210.00, 'description'),
 (1098, 'RED OIL', 4, 11, 300.00, 450.00, 172.00, 'description'),
 (1099, 'CASTROL CRB MONO ', 4, 4, 400.00, 650.00, 94.30, 'description'),
 (1100, 'BATTERY MIXTURE', 3, 1, 15.00, 30.00, 0.00, 'description'),
@@ -2058,7 +2124,8 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `brand_id`, `buying_price`, 
 (1133, 'VESLEE COOLANT RED', 5, 1, 160.00, 300.00, 5.00, 'description'),
 (1134, 'LUBROL SPEED 4T 1L', 4, 1, 526.66, 650.00, 12.00, 'description'),
 (1135, 'Testing Prod 8', 3, 10, 700.00, 1000.00, 20.00, 'description'),
-(1140, 'Testing Prod 3', 5, 26, 533.00, 194.00, 100.00, 'description');
+(1140, 'Testing Prod 3', 5, 26, 533.00, 194.00, 100.00, 'description'),
+(1141, 'New Pro 1', 11, 20, 90.00, 130.00, 15.00, 'description');
 
 -- --------------------------------------------------------
 
@@ -2097,7 +2164,7 @@ INSERT INTO `product_batch` (`id`, `product_id`, `buying_price`, `selling_price`
 (14, 464, 3870.00, 4581.00, 6.00, 8.00, '2023-04-13 11:49:56'),
 (15, 775, 5160.00, 6099.00, 5.00, 8.00, '2023-04-13 11:50:19'),
 (16, 44, 4500.00, 5464.00, 2.00, 4.00, '2023-04-13 11:51:02'),
-(17, 43, 6000.00, 7279.00, 3.00, 4.00, '2023-04-13 11:51:26'),
+(17, 43, 6000.00, 7279.00, 2.00, 4.00, '2023-04-13 11:51:26'),
 (18, 525, 526.00, 599.00, 33.00, 60.00, '2023-04-13 11:52:55'),
 (19, 25, 948.00, 1053.00, 17.00, 24.00, '2023-04-13 11:54:34'),
 (20, 24, 2844.00, 3159.00, 4.00, 8.00, '2023-04-13 11:54:59'),
@@ -2108,11 +2175,11 @@ INSERT INTO `product_batch` (`id`, `product_id`, `buying_price`, `selling_price`
 (25, 634, 7472.00, 8210.00, 1.00, 1.00, '2023-04-13 11:57:29'),
 (26, 8, 3312.00, 3635.00, 4.50, 8.00, '2023-04-13 11:57:57'),
 (27, 7, 8280.00, 9087.00, 4.00, 4.00, '2023-04-13 11:58:43'),
-(28, 5, 3448.00, 3832.00, 8.00, 8.00, '2023-04-13 11:59:10'),
-(29, 4, 8620.00, 9581.00, 4.00, 4.00, '2023-04-13 11:59:44'),
+(28, 5, 3448.00, 3832.00, 7.00, 8.00, '2023-04-13 11:59:10'),
+(29, 4, 8620.00, 9581.00, 3.00, 4.00, '2023-04-13 11:59:44'),
 (31, 2, 4332.00, 4785.00, 7.00, 8.00, '2023-04-13 12:00:30'),
 (32, 1, 10830.00, 11961.00, 4.00, 4.00, '2023-04-13 12:00:57'),
-(33, 10, 1110.00, 1180.00, 12.00, 12.00, '2023-04-13 12:01:55'),
+(33, 10, 1110.00, 1180.00, 11.00, 12.00, '2023-04-13 12:01:55'),
 (34, 80, 610.00, 720.00, 0.00, 24.00, '2023-04-13 12:02:49'),
 (35, 79, 860.00, 1025.00, 17.00, 24.00, '2023-04-13 12:03:35'),
 (36, 78, 790.00, 940.00, 11.00, 24.00, '2023-04-13 12:05:08'),
@@ -2226,7 +2293,7 @@ INSERT INTO `product_batch` (`id`, `product_id`, `buying_price`, `selling_price`
 (154, 1074, 750.00, 1000.00, 2.00, 2.00, '2023-04-13 14:07:34'),
 (155, 1075, 160.00, 450.00, 7.00, 10.00, '2023-04-13 14:08:11'),
 (156, 1076, 950.00, 1200.00, 4.00, 6.00, '2023-04-13 14:08:57'),
-(157, 1077, 350.00, 450.00, 4.00, 6.00, '2023-04-13 14:09:24'),
+(157, 1077, 350.00, 450.00, 3.00, 6.00, '2023-04-13 14:09:24'),
 (158, 1078, 210.00, 300.00, 11.00, 12.00, '2023-04-13 14:09:55'),
 (159, 1079, 250.00, 350.00, 12.00, 12.00, '2023-04-13 14:10:27'),
 (160, 1080, 280.00, 400.00, 12.00, 12.00, '2023-04-13 14:11:59'),
@@ -2269,7 +2336,7 @@ INSERT INTO `product_batch` (`id`, `product_id`, `buying_price`, `selling_price`
 (198, 1095, 725.00, 874.00, 4.00, 12.00, '2023-04-16 05:45:28'),
 (199, 1096, 230.00, 300.00, 5.00, 12.00, '2023-04-17 04:46:28'),
 (200, 1091, 750.00, 850.00, 119.80, 140.00, '2023-04-17 12:26:40'),
-(201, 1097, 400.00, 550.00, 200.00, 200.00, '2023-04-17 12:29:07'),
+(201, 1097, 400.00, 550.00, 210.00, 210.00, '2023-04-17 12:29:07'),
 (202, 1098, 300.00, 450.00, 172.00, 205.00, '2023-04-17 12:30:31'),
 (204, 1101, 280.00, 350.00, 6.00, 6.00, '2023-04-19 04:21:32'),
 (205, 1102, 185.00, 450.00, 6.00, 6.00, '2023-04-19 04:22:59'),
@@ -2314,11 +2381,13 @@ INSERT INTO `product_batch` (`id`, `product_id`, `buying_price`, `selling_price`
 (249, 1118, 200.00, 450.00, 6.00, 6.00, '2023-05-09 07:02:34'),
 (250, 1087, 65.00, 150.00, 20.00, 20.00, '2023-05-09 07:03:03'),
 (251, 1026, 210.00, 450.00, 4.00, 4.00, '2023-05-09 07:05:14'),
-(253, 1009, 400.00, 550.00, 15.00, 20.00, '2023-05-30 09:48:25'),
+(253, 1009, 400.00, 550.00, 0.00, 20.00, '2023-05-30 09:48:25'),
 (254, 1135, 750.00, 1050.00, 20.00, 20.00, '2023-12-15 05:43:52'),
 (259, 1140, 533.00, 194.00, 100.00, 100.00, '2023-12-15 06:43:15'),
-(260, 1077, 2500.00, 3000.00, 10.00, 10.00, '2023-12-15 06:54:59'),
-(262, 1009, 500.00, 700.00, 15.00, 15.00, '2023-12-15 13:23:53');
+(260, 1077, 2500.00, 3000.00, 20.00, 20.00, '2023-12-15 06:54:59'),
+(262, 1009, 500.00, 700.00, 10.00, 15.00, '2023-12-15 13:23:53'),
+(264, 1141, 70.00, 100.00, 0.00, 50.00, '2023-12-19 08:24:48'),
+(265, 1141, 90.00, 130.00, 15.00, 20.00, '2023-12-19 08:27:14');
 
 -- --------------------------------------------------------
 
@@ -2407,6 +2476,18 @@ ALTER TABLE `expense`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `log_products`
+--
+ALTER TABLE `log_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `log_product_batch`
+--
+ALTER TABLE `log_product_batch`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -2465,28 +2546,40 @@ ALTER TABLE `expense`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
+-- AUTO_INCREMENT for table `log_products`
+--
+ALTER TABLE `log_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `log_product_batch`
+--
+ALTER TABLE `log_product_batch`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=574;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=581;
 
 --
 -- AUTO_INCREMENT for table `order_product`
 --
 ALTER TABLE `order_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=769;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=785;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1141;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1142;
 
 --
 -- AUTO_INCREMENT for table `product_batch`
 --
 ALTER TABLE `product_batch`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=266;
 
 --
 -- AUTO_INCREMENT for table `vendor_payments`
